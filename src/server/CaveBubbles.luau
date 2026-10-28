@@ -366,6 +366,10 @@ function CaveBubbles.start(root: Instance)
 		rec:SetAttribute("Phase", 0)
 		rec:SetAttribute("Born", Workspace:GetServerTimeNow())
 		rec:SetAttribute("Popping", false)
+		-- world-announced egg: clients play its rarity music (GameAudio)
+		if draft.ultra then
+			rec:SetAttribute("Announced", true)
+		end
 		rec.Parent = state
 		attachPrompt(rec, origin, draft.shellSize, draft.eggName)
 		if draft.ultra then
@@ -549,7 +553,7 @@ function CaveBubbles.start(root: Instance)
 			size = EggScale.carryBox(carriedEgg, sizeScale),
 			eggName = carriedEgg,
 		})
-		equipBeast(
+		local tool = equipBeast(
 			player,
 			nest,
 			carriedEgg,
@@ -559,6 +563,13 @@ function CaveBubbles.start(root: Instance)
 			if typeof(recIncome) == "number" then recIncome else nil,
 			if typeof(recSource) == "string" then recSource else nil
 		)
+		if tool then
+			-- GameAudio: steal whoosh, and the rarity music while the egg is carried
+			tool:SetAttribute("StolenAt", Workspace:GetServerTimeNow())
+			if rec:GetAttribute("Announced") == true then
+				tool:SetAttribute("Announced", true)
+			end
+		end
 		local captureAt = origin
 		rec:Destroy()
 		-- admin drops sit in the plaza: no guardian chases those

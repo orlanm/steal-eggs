@@ -525,6 +525,8 @@ local function hatchNow(pet: Pet)
 		return
 	end
 	markHatched(pet)
+	-- GameAudio: crack + reveal on every client near the pen
+	pet.model:SetAttribute("HatchedAt", workspace:GetServerTimeNow())
 	local owner = Players:GetPlayerByUserId(pet.ownerId)
 	if owner and pet.income > 0 then
 		SpeedData.addCash(owner, pet.income * 10)
@@ -1418,6 +1420,8 @@ function TankBeasts.start(root: Instance)
 		local pet = spawnPet(folder, tank, spec, from)
 		pet.ownerId = player.UserId
 		pet.model:SetAttribute("OwnerUserId", player.UserId)
+		-- GameAudio: the "secured" chime at the pen
+		pet.model:SetAttribute("PlacedAt", workspace:GetServerTimeNow())
 		tool:Destroy()
 		table.insert(live, pet)
 		task.delay(0.4, function()
