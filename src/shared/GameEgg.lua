@@ -2402,22 +2402,6 @@ local Eggs: { Egg } = {
 		},
 	},
 	{
-		Name = "Galaxy Gecko",
-		MeshId = "rbxassetid://110983711538857",
-		Center = Vector3.new(-0.02075, 0.45545, -0.00073),
-		Bounds = Vector3.new(0.2537, 0.05, 0.26834),
-		Parts = {
-			{
-				Name = "star",
-				MeshId = "rbxassetid://110983711538857",
-				Size = Vector3.new(0.26834, 0.2537, 0.00724),
-				Color = Color3.fromRGB(163, 98, 188),
-				Transparency = 0,
-				Offset = CFrame.new(-0.02075, 0.45545, -0.00073, 0, 1, 0, 0, 0, -1, -1, 0, 0),
-			},
-		},
-	},
-	{
 		Name = "Ghost Fish",
 		MeshId = "rbxassetid://121547002042884",
 		Center = Vector3.new(0, 0, 0),
@@ -6624,6 +6608,7 @@ local Missing: { string } = {
 	"Dinosaur Egg",
 	"Dodo",
 	"fusedegg2",
+	"Galaxy Gecko", -- only its star decoration survived; uses the generated catalog egg
 	"Hellhound",
 	"Pterodactyl",
 	"Tralaledon",
