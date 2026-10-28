@@ -53,7 +53,7 @@ GuardConfig.Guards = table.freeze({
 	},
 	Cosmic = {
 		Size = Vector3.new(17.77, 17.37, 10.42),
-		Anims = anims(71000132557140, 79347976222460, 104787458468810, 86173998878987),
+		Anims = anims(71000132557140, 79347976222460, 126074948192250, 86173998878987),
 	},
 	["Cherry Blossom"] = {
 		Size = Vector3.new(16.14, 20.17, 38.07),
@@ -83,7 +83,7 @@ GuardConfig.Guards = table.freeze({
 	Spirit_Panda = {
 		Size = Vector3.new(14.55, 19.84, 26.42),
 		ForwardZ = 1,
-		Anims = anims(107925953205760, 76539689125453, 94226280805288, 81043370065127),
+		Anims = anims(76172375908054, 101020480961671, 94226280805288, 88655259388012),
 	},
 	Toxic_Crocodile = {
 		Size = Vector3.new(7.99, 9.27, 27.44),
@@ -93,13 +93,13 @@ GuardConfig.Guards = table.freeze({
 	Shattered_Colossus = {
 		Size = Vector3.new(15.88, 24.83, 9.47),
 		ForwardZ = 1,
-		Anims = anims(135531870788852, 103778428018373, 104835522679262, 138004994289191),
+		Anims = anims(135531870788852, 75960076761195, 104835522679262, 138004994289191),
 	},
 	Kraken = {
 		Size = Vector3.new(38.12, 23.32, 37.09),
 		ForwardZ = 1,
 		Swim = 0.15,
-		Anims = anims(116544172401476, 95798487280447, 113397513308539, 77551741681696),
+		Anims = anims(116544172401476, 95798487280447, 117287207884434, 77551741681696),
 	},
 	Mecha_Crocodon = {
 		Size = Vector3.new(14.81, 17.63, 26.93),
@@ -110,7 +110,7 @@ GuardConfig.Guards = table.freeze({
 		Size = Vector3.new(25.37, 17.20, 78.62),
 		ForwardZ = 1,
 		Swim = 0.25,
-		Anims = anims(89133861881682, 85223707787164, 123859607345017, 86890347435685),
+		Anims = anims(132263099385557, 89863658531617, 123859607345017, 86890347435685),
 	},
 	Ghost_Reaper = {
 		Size = Vector3.new(18.14, 19.22, 10.05),
@@ -120,12 +120,12 @@ GuardConfig.Guards = table.freeze({
 	Strawberry_Elephant = {
 		Size = Vector3.new(20.75, 22.33, 24.52),
 		ForwardZ = 1,
-		Anims = anims(71410136335322, 91315944561598, 97844928583560, 97501870050050),
+		Anims = anims(71410136335322, 91795230550998, 97844928583560, 113409034171990),
 	},
 	Eternal_Lunar_Dragon = {
 		Size = Vector3.new(18.59, 20.61, 74.73),
 		ForwardZ = 1,
-		Anims = anims(135899437395445, 94267274832486, 123883532165606, 110044903405905),
+		Anims = anims(118069194988528, 111251727481553, 127118530857578, 127877635088433),
 	},
 })
 

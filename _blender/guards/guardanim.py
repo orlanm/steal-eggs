@@ -522,7 +522,8 @@ def xml_cf(m):
     r = m[:3, :3]
     vals = dict(X=m[0, 3], Y=m[1, 3], Z=m[2, 3], R00=r[0, 0], R01=r[0, 1], R02=r[0, 2], R10=r[1, 0], R11=r[1, 1],
                 R12=r[1, 2], R20=r[2, 0], R21=r[2, 1], R22=r[2, 2])
-    return ''.join(f'<{k}>{v:.6g}</{k}>' for k, v in vals.items())
+    # Roblox imports denormal floats (e.g. 1.7e-39) as inf, which throws the bone off-screen for that frame
+    return ''.join(f'<{k}>{0.0 if abs(v) < 1e-9 else v:.6g}</{k}>' for k, v in vals.items())
 
 
 def write(rig, rec, name, clip, frames, loop):
