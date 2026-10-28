@@ -1,5 +1,6 @@
 -- Studio Edit (MCP execute_luau or command bar): build ServerStorage.FishingBoat from the uploaded
 -- Blender model (_blender/fishing_boat.py -> _tools/boat/upload_boat.py). Save the place afterwards.
+-- Players walk through the fish tank and its rim (not in COLLIDE).
 -- Model space: bow toward -Z, waterline at Y = 0, deck top at Y = 1.6, chair cushion top at Y = 3.75.
 local ASSET = 78259234163669 -- _tools/boat/uploaded.json
 local DECK = 1.6
@@ -26,8 +27,6 @@ local COLLIDE = {
 	Red_Hull = Enum.CollisionFidelity.Hull,
 	Blue_Rim = Enum.CollisionFidelity.PreciseConvexDecomposition,
 	Deck_Floor = Enum.CollisionFidelity.Hull,
-	Glass_Tank = Enum.CollisionFidelity.Hull,
-	Grey_TankRim = Enum.CollisionFidelity.Hull,
 	White_Console = Enum.CollisionFidelity.Box,
 	Seat_Back = Enum.CollisionFidelity.Box,
 }
@@ -91,6 +90,9 @@ for _, p in raw:GetDescendants() do
 		n.Color, n.Material, n.MaterialVariant, n.Transparency = g[1], Enum.Material.SmoothPlastic, "", g[2]
 		if p.Name:match("^Glass_") then
 			n.Reflectance = 0.15
+		end
+		if p.Name == "Blue_Lid" or p.Name == "Navy_LidKnob" then
+			n.Transparency = 0.5 -- see-through tank lid
 		end
 		local fidelity = COLLIDE[p.Name]
 		n.CanCollide = fidelity ~= nil

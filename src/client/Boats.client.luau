@@ -3,7 +3,7 @@
 -- Drives your own boat (workspace.Boats, spawned by Boats.server, network-owned by you).
 -- Only while you sit on the red chair does the move input steer it: the boat turns toward the
 -- camera-relative direction and sails forward, held on the water surface. Jump to get up: the boat
--- coasts to a stop and you walk the deck (kept inside it: trained players run fast enough to pass
+-- coasts to a stop, you land beside the chair (not on it) and walk the deck (kept inside it: trained players run fast enough to pass
 -- straight through the template's thin BoatBarrier walls). Walk back up to the chair
 -- and you sit down again (after stepping away from it once, so a jump off doesn't re-seat you).
 local Players = game:GetService("Players")
@@ -23,6 +23,7 @@ local TURN = 1.7 -- rad/s at full input
 local BOW = 13 -- studs from the boat's centre to its bow
 local BOB = 0.15
 local SIT_REACH = 2.6 -- studs from the chair (flat) that sit you down
+local STEP_ASIDE = 3 -- getting up lands you this far to the chair's side
 local REARM = 4.5 -- after getting up, step this far from the chair before it seats you again
 
 -- deck outline in the boat's local X/Z (same as _blender/fishing_boat.py), shrunk by a body width
@@ -84,12 +85,14 @@ local speed = 0
 local lastSit = 0
 local armed = false -- may the chair seat us when we walk up to it
 local aboard = false -- got up from the chair: walking the deck
+local wasDriving = false
 
 local function track(child: Instance)
 	if child:IsA("Model") and child:GetAttribute("Owner") == player.UserId then
 		boat = child
 		speed = 0
 		aboard = false
+		wasDriving = false
 		local root = child.PrimaryPart or child:WaitForChild("BoatRoot", 5) :: BasePart?
 		if root then
 			local _, yaw = root.CFrame:ToEulerAnglesYXZ()
@@ -167,6 +170,13 @@ RunService.PreSimulation:Connect(function(dt)
 		armed = false
 		aboard = true
 	elseif humanoid and rootPart then
+		if wasDriving then
+			-- just jumped up: come down on the deck beside the chair instead of back on it
+			local here = root.CFrame:PointToObjectSpace(rootPart.Position)
+			local chair = root.CFrame:PointToObjectSpace(seat.Position)
+			local beside = root.CFrame:PointToWorldSpace(Vector3.new(chair.X + STEP_ASIDE, here.Y, chair.Z))
+			rootPart.CFrame = rootPart.CFrame.Rotation + beside
+		end
 		if aboard and (rootPart.Position - root.Position).Magnitude > ABOARD_RANGE then
 			aboard = false
 		end
@@ -175,6 +185,7 @@ RunService.PreSimulation:Connect(function(dt)
 		end
 		maybeSit(seat, humanoid, rootPart)
 	end
+	wasDriving = driving
 	speed += math.clamp(target - speed, -BRAKE * dt, ACCEL * dt)
 
 	local forward = Vector3.new(-math.sin(heading), 0, -math.cos(heading))
