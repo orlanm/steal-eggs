@@ -1,0 +1,38 @@
+{
+  "name": "Steal Eggs",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "$ignoreUnknownInstances": true,
+      "BabyBeastsShared": {
+        "$path": "src/shared",
+        "$ignoreUnknownInstances": true
+      }
+    },
+    "ServerScriptService": {
+      "$ignoreUnknownInstances": true,
+      "BabyBeastsServer": {
+        "$path": "src/server",
+        "$ignoreUnknownInstances": true
+      }
+    },
+    "StarterPlayer": {
+      "$ignoreUnknownInstances": true,
+      "StarterPlayerScripts": {
+        "$ignoreUnknownInstances": true,
+        "BabyBeastsClient": {
+          "$path": "src/client",
+          "$ignoreUnknownInstances": true
+        }
+      }
+    },
+    "ServerStorage": {
+      "$ignoreUnknownInstances": true,
+      "EnchantedTreeInterior_Import": {
+        "$path": "_import/EnchantedTreeInterior_lean.rbxmx"
+      }
+    }
+  },
+  "servePort": 34873,
+  "servePlaceIds": [121962317867552]
+}

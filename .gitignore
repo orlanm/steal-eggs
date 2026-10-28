@@ -1,0 +1,35 @@
+# Secrets
+.roblox_opencloud_key
+
+# Roblox place / model binaries
+.rojo/
+*.rbxlx
+*.rbxl
+*.rbxm
+*.rbxmx
+
+# OS / editor
+.DS_Store
+.cursor/
+
+# Large local asset / tool caches (keep scripts; skip heavy media)
+_ref-models/
+_tools/pets/
+_assets/
+_bubble/
+_backups/
+_import/
+_recover/
+mesh_batches/
+mesh_chunks/
+
+# Blender binaries (keep .py scripts)
+_blender/**/*.blend
+_blender/**/*.blend1
+_blender/guards/out/
+
+# Misc large dumps
+trex_*.jpg
+trex_*.json
+trex_*.bin
+*.b64

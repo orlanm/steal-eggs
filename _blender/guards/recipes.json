@@ -1,0 +1,802 @@
+{
+  "Prehistoric": {
+    "type": "biped",
+    "movers": [
+      "Root"
+    ],
+    "spine": [
+      "LowerBody",
+      "UpperBody"
+    ],
+    "neck": [
+      "Neck"
+    ],
+    "head": "Bone.003",
+    "jaw": "LowerMouth",
+    "jawOpen": 28,
+    "tail": [
+      "Tail",
+      "Tail.001",
+      "Tail.002",
+      "Tail.003",
+      "Tail.004",
+      "Tail.005"
+    ],
+    "legs": [
+      {
+        "chain": [
+          "UpperLeg.L",
+          "LowerLeg.L",
+          "Knee.L"
+        ],
+        "side": "L",
+        "end": "back"
+      },
+      {
+        "chain": [
+          "UpperLeg.R",
+          "LowerLeg.R",
+          "Knee.R"
+        ],
+        "side": "R",
+        "end": "back"
+      }
+    ],
+    "arms": [
+      {
+        "chain": [
+          "UpperArm.L",
+          "LowerArm.L",
+          "Hand.L"
+        ],
+        "side": "L"
+      },
+      {
+        "chain": [
+          "UpperArm.R",
+          "LowerArm.R",
+          "Hand.R"
+        ],
+        "side": "R"
+      }
+    ],
+    "armSwing": 0.4,
+    "follow": {
+      "IK_Leg.L": "Knee.L",
+      "IK_Leg.R": "Knee.R"
+    },
+    "feet": [
+      "Foot.L",
+      "Foot.R"
+    ],
+    "sleepDrop": 11,
+    "runPeriod": 0.8,
+    "runLean": 4
+  },
+  "Cherry Blossom": {
+    "type": "quad",
+    "movers": [
+      "root"
+    ],
+    "spine": [
+      "Torso1",
+      "Torso2",
+      "Torso3"
+    ],
+    "head": "Head1",
+    "jaw": "MouthBottom1",
+    "tail": [
+      "Tail1",
+      "Tail2",
+      "Tail3"
+    ],
+    "legs": [
+      {
+        "chain": [
+          "FrontLeg1.L",
+          "FrontLeg2.L",
+          "FrontLeg3.L"
+        ],
+        "side": "L",
+        "end": "front"
+      },
+      {
+        "chain": [
+          "FrontLeg1.R",
+          "FrontLeg2.R",
+          "FrontLeg3.R"
+        ],
+        "side": "R",
+        "end": "front"
+      },
+      {
+        "chain": [
+          "BackLeg1.L",
+          "BackLeg2.L",
+          "BackLeg3.L"
+        ],
+        "side": "L",
+        "end": "back"
+      },
+      {
+        "chain": [
+          "BackLeg1.R",
+          "BackLeg2.R",
+          "BackLeg3.R"
+        ],
+        "side": "R",
+        "end": "back"
+      }
+    ],
+    "follow": {
+      "FrontLeg3.L.002": "FrontLeg3.L",
+      "FrontLeg3.R.002": "FrontLeg3.R",
+      "BackLeg3.L.003": "BackLeg3.L",
+      "BackLeg3.R.003": "BackLeg3.R"
+    },
+    "feet": [
+      "FrontFoot1.L",
+      "FrontFoot1.R",
+      "BackFoot1.L",
+      "BackFoot1.R"
+    ],
+    "sleepDrop": 7.5,
+    "runPeriod": 0.75,
+    "sleepScale": 1.3
+  },
+  "Enchanted Forest": {
+    "type": "quad",
+    "movers": [
+      "root"
+    ],
+    "spine": [
+      "Torso1",
+      "Torso2",
+      "Torso3"
+    ],
+    "neck": [
+      "Torso4"
+    ],
+    "head": "Head1",
+    "jaw": "MouthBottom1",
+    "tail": [
+      "Tail1",
+      "Tail2",
+      "Tail3",
+      "Tail4",
+      "Tail5"
+    ],
+    "legs": [
+      {
+        "chain": [
+          "FrontLeg1.L",
+          "FrontLeg2.L",
+          "FrontLeg3.L"
+        ],
+        "side": "L",
+        "end": "front"
+      },
+      {
+        "chain": [
+          "FrontLeg1.R",
+          "FrontLeg2.R",
+          "FrontLeg3.R"
+        ],
+        "side": "R",
+        "end": "front"
+      },
+      {
+        "chain": [
+          "BackLeg1.L",
+          "BackLeg2.L",
+          "BackLeg3.L"
+        ],
+        "side": "L",
+        "end": "back"
+      },
+      {
+        "chain": [
+          "BackLeg1.R",
+          "BackLeg2.R",
+          "BackLeg3.R"
+        ],
+        "side": "R",
+        "end": "back"
+      }
+    ],
+    "follow": {
+      "FrontLeg3.L.001": "FrontLeg3.L",
+      "FrontLeg3.R.001": "FrontLeg3.R",
+      "BackLeg3.L.001": "BackLeg3.L",
+      "BackLeg3.R.001": "BackLeg3.R"
+    },
+    "feet": [
+      "FrontFoot1.L",
+      "FrontFoot1.R",
+      "BackFoot1.L",
+      "BackFoot1.R"
+    ],
+    "sleepDrop": 9.5,
+    "runPeriod": 0.8
+  },
+  "Jungle": {
+    "type": "quad",
+    "movers": [
+      "Pin"
+    ],
+    "spine": [
+      "Body",
+      "Body.001"
+    ],
+    "head": "Head",
+    "jaw": "Jaw",
+    "tail": [
+      "Tails",
+      "Tails.001",
+      "Tails.002",
+      "Tails.003",
+      "Tails.004",
+      "Tails.005",
+      "Tails.006"
+    ],
+    "legs": [
+      {
+        "chain": [
+          "FrontLeg.L",
+          "FrontLeg.001.L",
+          "FrontLeg.002.L"
+        ],
+        "side": "L",
+        "end": "front"
+      },
+      {
+        "chain": [
+          "FrontLeg.R",
+          "FrontLeg.001.R",
+          "FrontLeg.002.R"
+        ],
+        "side": "R",
+        "end": "front"
+      },
+      {
+        "chain": [
+          "BackLeg.L",
+          "BackLeg.001.L",
+          "BackLeg.002.L"
+        ],
+        "side": "L",
+        "end": "back"
+      },
+      {
+        "chain": [
+          "BackLeg.R",
+          "BackLeg.001.R",
+          "BackLeg.002.R"
+        ],
+        "side": "R",
+        "end": "back"
+      }
+    ],
+    "feet": "auto",
+    "sleepDrop": 2.3,
+    "runPeriod": 0.6
+  },
+  "Volcano": {
+    "type": "quad",
+    "movers": [
+      "Torso"
+    ],
+    "spine": [
+      "Torso"
+    ],
+    "head": "Head",
+    "tail": [
+      "Cerberus.001",
+      "Cerberus.002",
+      "Cerberus.003",
+      "Cerberus.004",
+      "Cerberus.005",
+      "Cerberus.006",
+      "Cerberus.007",
+      "Cerberus.008"
+    ],
+    "legs": [
+      {
+        "chain": [
+          "Cerberus.020",
+          "Cerberus.019",
+          "Cerberus.018"
+        ],
+        "side": "L",
+        "end": "front"
+      },
+      {
+        "chain": [
+          "Cerberus.013",
+          "Cerberus.014",
+          "Cerberus.016"
+        ],
+        "side": "R",
+        "end": "front"
+      },
+      {
+        "chain": [
+          "Cerberus.021",
+          "Cerberus.022",
+          "Cerberus.024"
+        ],
+        "side": "L",
+        "end": "back"
+      },
+      {
+        "chain": [
+          "Cerberus.009",
+          "Cerberus.010",
+          "Cerberus.012"
+        ],
+        "side": "R",
+        "end": "back"
+      }
+    ],
+    "feet": "auto",
+    "sleepDrop": 2.0,
+    "runPeriod": 0.7
+  },
+  "Desert": {
+    "type": "multileg",
+    "movers": [
+      "Body"
+    ],
+    "spine": [
+      "Body"
+    ],
+    "head": "Head",
+    "tail": [
+      "Tail Segment 0",
+      "Tail Segment 1",
+      "Tail Segment 2",
+      "Tail Segment 3",
+      "Tail Segment 4",
+      "Tail Segment 5",
+      "Tail Segment 6",
+      "Stinger 0"
+    ],
+    "legs": [
+      {
+        "chain": [
+          "LF_Femur",
+          "LF_Calf",
+          "LF_Paw"
+        ],
+        "side": "L",
+        "index": 0
+      },
+      {
+        "chain": [
+          "LM0_Femur",
+          "LM0_Calf",
+          "LM0_Paw"
+        ],
+        "side": "L",
+        "index": 1
+      },
+      {
+        "chain": [
+          "LM1_Femur",
+          "LM1_Calf",
+          "LM1_Paw"
+        ],
+        "side": "L",
+        "index": 2
+      },
+      {
+        "chain": [
+          "LR_Femur",
+          "LR_Calf",
+          "LR_Paw"
+        ],
+        "side": "L",
+        "index": 3
+      },
+      {
+        "chain": [
+          "RF_Femur",
+          "RF_Calf",
+          "RF_Paw"
+        ],
+        "side": "R",
+        "index": 0
+      },
+      {
+        "chain": [
+          "RM0_Femur",
+          "RM0_Calf",
+          "RM0_Paw"
+        ],
+        "side": "R",
+        "index": 1
+      },
+      {
+        "chain": [
+          "RM1_Femur",
+          "RM1_Calf",
+          "RM1_Paw"
+        ],
+        "side": "R",
+        "index": 2
+      },
+      {
+        "chain": [
+          "RR_Femur",
+          "RR_Calf",
+          "RR_Paw"
+        ],
+        "side": "R",
+        "index": 3
+      }
+    ],
+    "arms": [
+      {
+        "chain": [
+          "L_Pincer"
+        ],
+        "side": "L"
+      },
+      {
+        "chain": [
+          "R_Pincer"
+        ],
+        "side": "R"
+      }
+    ],
+    "feet": "auto",
+    "sleepDrop": 0.7,
+    "runPeriod": 0.45
+  },
+  "Abyss Ocean": {
+    "type": "swim",
+    "movers": [
+      "Torso"
+    ],
+    "spine": [
+      "Torso"
+    ],
+    "head": "Head",
+    "tail": [
+      "Motormesh0031"
+    ],
+    "arms": [
+      {
+        "chain": [
+          "Motormesh0021"
+        ],
+        "side": "L"
+      },
+      {
+        "chain": [
+          "Motormesh0021.001"
+        ],
+        "side": "R"
+      }
+    ],
+    "sleepDrop": 0.3,
+    "runPeriod": 1.1
+  },
+  "Forest": {
+    "type": "bird",
+    "movers": [
+      "Torso"
+    ],
+    "spine": [
+      "Torso"
+    ],
+    "head": "Head",
+    "legs": [
+      {
+        "chain": [
+          "Cube.003"
+        ],
+        "side": "L",
+        "end": "back"
+      },
+      {
+        "chain": [
+          "Cube.005"
+        ],
+        "side": "R",
+        "end": "back"
+      }
+    ],
+    "feet": "auto",
+    "sleepDrop": 0.8,
+    "runPeriod": 0.45,
+    "sleepAuto": false
+  },
+  "Lake": {
+    "type": "bird",
+    "movers": [
+      "Torso"
+    ],
+    "spine": [
+      "Torso"
+    ],
+    "head": "Head",
+    "tail": [
+      "Tail"
+    ],
+    "legs": [
+      {
+        "chain": [
+          "LULeg",
+          "LLLeg"
+        ],
+        "side": "L",
+        "end": "back"
+      },
+      {
+        "chain": [
+          "RULeg",
+          "RLLeg"
+        ],
+        "side": "R",
+        "end": "back"
+      }
+    ],
+    "wings": [
+      {
+        "chain": [
+          "LWing"
+        ],
+        "side": "L"
+      },
+      {
+        "chain": [
+          "RWing"
+        ],
+        "side": "R"
+      }
+    ],
+    "feet": "auto",
+    "sleepDrop": 1.1,
+    "runPeriod": 0.5,
+    "flap": 0.8
+  },
+  "Snow": {
+    "type": "biped",
+    "movers": [
+      "Torso"
+    ],
+    "spine": [
+      "Torso"
+    ],
+    "head": "Head",
+    "legs": [
+      {
+        "chain": [
+          "LeftUpperLeg",
+          "LeftLowerLeg",
+          "LeftFoot"
+        ],
+        "side": "L",
+        "end": "back"
+      },
+      {
+        "chain": [
+          "RightUpperLeg",
+          "RightLowerLeg",
+          "RightFoot"
+        ],
+        "side": "R",
+        "end": "back"
+      }
+    ],
+    "arms": [
+      {
+        "chain": [
+          "LeftUpperArm",
+          "LeftLowerArm"
+        ],
+        "side": "L"
+      },
+      {
+        "chain": [
+          "RightUpperArm",
+          "RightLowerArm"
+        ],
+        "side": "R"
+      }
+    ],
+    "feet": "auto",
+    "sleepDrop": 3.2,
+    "runPeriod": 0.7,
+    "runLean": 6
+  },
+  "Cosmic": {
+    "type": "biped",
+    "movers": [
+      "Default"
+    ],
+    "spine": [
+      "Global",
+      "Torso"
+    ],
+    "head": "Head",
+    "tail": [
+      "Tail",
+      "TailPart1",
+      "TailPart2",
+      "TailPart3"
+    ],
+    "legs": [
+      {
+        "chain": [
+          "LeftUpperLeg",
+          "LeftLowerLeg",
+          "LeftFoot"
+        ],
+        "side": "L",
+        "end": "back"
+      },
+      {
+        "chain": [
+          "RightUpperLeg",
+          "RightLowerLeg",
+          "RightFoot"
+        ],
+        "side": "R",
+        "end": "back"
+      }
+    ],
+    "arms": [
+      {
+        "chain": [
+          "LeftUpperArm",
+          "LeftLowerArm",
+          "LeftHand"
+        ],
+        "side": "L"
+      },
+      {
+        "chain": [
+          "RightUpperArm",
+          "RightLowerArm",
+          "RightHand"
+        ],
+        "side": "R"
+      }
+    ],
+    "feet": "auto",
+    "sleepDrop": 4.5,
+    "runPeriod": 0.7,
+    "runLean": 8
+  },
+  "Titan Temple": {
+    "type": "biped",
+    "movers": [
+      "torso_controler"
+    ],
+    "spine": [
+      "Torso2",
+      "Torso3"
+    ],
+    "head": "Head1",
+    "jaw": "MouthBottom1",
+    "legs": [
+      {
+        "chain": [
+          "Leg1.L",
+          "Leg2.L",
+          "Foot1.L"
+        ],
+        "side": "L",
+        "end": "back"
+      },
+      {
+        "chain": [
+          "Leg1.R",
+          "Leg2.R",
+          "Foot1.R"
+        ],
+        "side": "R",
+        "end": "back"
+      }
+    ],
+    "arms": [
+      {
+        "chain": [
+          "Arm1.L",
+          "Arm2.L",
+          "Arm3.L"
+        ],
+        "side": "L"
+      },
+      {
+        "chain": [
+          "Arm1.R",
+          "Arm2.R",
+          "Arm3.R"
+        ],
+        "side": "R"
+      }
+    ],
+    "armSwing": 1.3,
+    "feet": "auto",
+    "sleepDrop": 6.0,
+    "runPeriod": 0.75,
+    "runLean": 12
+  },
+  "Light Dark": {
+    "type": "biped",
+    "movers": [
+      "root"
+    ],
+    "spine": [
+      "Torso1",
+      "Torso2"
+    ],
+    "neck": [
+      "Neck1"
+    ],
+    "head": "Head1",
+    "legs": [
+      {
+        "chain": [
+          "Leg1.L",
+          "Leg2.L",
+          "Foot1.L"
+        ],
+        "side": "L",
+        "end": "back"
+      },
+      {
+        "chain": [
+          "Leg1.R",
+          "Leg2.R",
+          "Foot1.R"
+        ],
+        "side": "R",
+        "end": "back"
+      }
+    ],
+    "arms": [
+      {
+        "chain": [
+          "Arm1.L",
+          "Arm2.L",
+          "Hand1.L"
+        ],
+        "side": "L"
+      },
+      {
+        "chain": [
+          "Arm1.R",
+          "Arm2.R",
+          "Hand1.R"
+        ],
+        "side": "R"
+      }
+    ],
+    "armSwing": 0.6,
+    "wings": [
+      {
+        "chain": [
+          "Wing1.L",
+          "Wing2.L"
+        ],
+        "side": "L"
+      },
+      {
+        "chain": [
+          "Wing1.R",
+          "Wing2.R"
+        ],
+        "side": "R"
+      }
+    ],
+    "flap": 0.6,
+    "feet": "auto",
+    "sleepDrop": 6.5,
+    "runPeriod": 0.75,
+    "runLean": 10
+  }
+}

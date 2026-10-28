@@ -1,0 +1,150 @@
+{
+ "Gifts.Growth": {
+  "id": 3722430601,
+  "art": "Gift"
+ },
+ "Gifts.Money": {
+  "id": 3722430619,
+  "art": "Gift"
+ },
+ "Gifts.Speed": {
+  "id": 3722430627,
+  "art": "Gift"
+ },
+ "Lucky.1": {
+  "id": 3722430634,
+  "art": "LuckyEgg"
+ },
+ "Lucky.3": {
+  "id": 3722430640,
+  "art": "LuckyEgg"
+ },
+ "Lucky.5": {
+  "id": 3722430643,
+  "art": "LuckyEgg"
+ },
+ "Cash.Small": {
+  "id": 3722430653,
+  "art": "CashStack"
+ },
+ "Cash.Medium": {
+  "id": 3722430663,
+  "art": "CashStack"
+ },
+ "Cash.Large": {
+  "id": 3722430666,
+  "art": "CashStack"
+ },
+ "Self.Growth": {
+  "id": 3722430741,
+  "art": "Stopwatch"
+ },
+ "Self.Money": {
+  "id": 3722430751,
+  "art": "Coin"
+ },
+ "Self.Speed": {
+  "id": 3722430758,
+  "art": "Sneaker"
+ },
+ "Passes.Growth": {
+  "id": 2053932423,
+  "art": "Stopwatch"
+ },
+ "Passes.Money": {
+  "id": 2052588360,
+  "art": "Coin"
+ },
+ "Passes.Speed": {
+  "id": 2052348431,
+  "art": "Sneaker"
+ },
+ "Stars.1": {
+  "id": 3722532922,
+  "art": "Star"
+ },
+ "Stars.3": {
+  "id": 3722532936,
+  "art": "Star"
+ },
+ "Stars.5": {
+  "id": 3722532941,
+  "art": "Star"
+ },
+ "Treadmill.2": {
+  "id": 3721186063,
+  "art": "Treadmill"
+ },
+ "Treadmill.3": {
+  "id": 3721252361,
+  "art": "Treadmill"
+ },
+ "Treadmill.4": {
+  "id": 3721252556,
+  "art": "Treadmill"
+ },
+ "Treadmill.5": {
+  "id": 3721252364,
+  "art": "Treadmill"
+ },
+ "Treadmill.6": {
+  "id": 3721252575,
+  "art": "Treadmill"
+ },
+ "Treadmill.7": {
+  "id": 3721252583,
+  "art": "Treadmill"
+ },
+ "Treadmill.8": {
+  "id": 3721252600,
+  "art": "Treadmill"
+ },
+ "Treadmill.9": {
+  "id": 3721252628,
+  "art": "Treadmill"
+ },
+ "Treadmill.10": {
+  "id": 3721252639,
+  "art": "Treadmill"
+ },
+ "Trail.Green": {
+  "id": 3720154668,
+  "art": "TrailHero"
+ },
+ "Trail.Blue": {
+  "id": 3720154902,
+  "art": "TrailHero"
+ },
+ "Trail.Purple": {
+  "id": 3720155033,
+  "art": "TrailHero"
+ },
+ "Trail.Golden": {
+  "id": 3720155131,
+  "art": "TrailHero"
+ },
+ "Trail.Red": {
+  "id": 3720155233,
+  "art": "TrailHero"
+ },
+ "Trail.Galaxy": {
+  "id": 3720155317,
+  "art": "TrailHero"
+ },
+ "Trail.Secret": {
+  "id": 3720155415,
+  "art": "TrailHero"
+ },
+ "Trail.Eternal": {
+  "id": 3720155507,
+  "art": "TrailHero"
+ },
+ "Trail.Divine": {
+  "id": 3720155590,
+  "art": "TrailHero"
+ },
+ "Trail.Moonbloom": {
+  "id": 3720155706,
+  "art": "TrailHero"
+ }
+}

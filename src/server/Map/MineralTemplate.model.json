@@ -1,0 +1,19 @@
+{
+  "ClassName": "MeshPart",
+  "Properties": {
+    "MeshId": "rbxassetid://87592179667055",
+    "Size": [
+      1.9651587,
+      5,
+      1.9584291
+    ],
+    "Anchored": true,
+    "CanCollide": true,
+    "Material": "Plastic",
+    "InitialSize": [
+      1.9651587,
+      5,
+      1.9584291
+    ]
+  }
+}

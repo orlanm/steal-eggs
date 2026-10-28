@@ -1,0 +1,570 @@
+[
+  {
+    "pet": "Chicken",
+    "biome": "Forest"
+  },
+  {
+    "pet": "Dog",
+    "biome": "Forest"
+  },
+  {
+    "pet": "Bird",
+    "biome": "Forest"
+  },
+  {
+    "pet": "Burrowing Owl",
+    "biome": "Forest"
+  },
+  {
+    "pet": "Raccoon",
+    "biome": "Forest"
+  },
+  {
+    "pet": "Fox",
+    "biome": "Forest"
+  },
+  {
+    "pet": "Bear",
+    "biome": "Forest"
+  },
+  {
+    "pet": "Brr Brr Patapim",
+    "biome": "Forest"
+  },
+  {
+    "pet": "Jerboa",
+    "biome": "Desert"
+  },
+  {
+    "pet": "Fennec",
+    "biome": "Desert"
+  },
+  {
+    "pet": "Camel",
+    "biome": "Desert"
+  },
+  {
+    "pet": "Tob Tobi Tob Tob",
+    "biome": "Desert"
+  },
+  {
+    "pet": "Snake",
+    "biome": "Desert"
+  },
+  {
+    "pet": "Sand Spider",
+    "biome": "Desert"
+  },
+  {
+    "pet": "Scorpion",
+    "biome": "Desert"
+  },
+  {
+    "pet": "Royal Sphinx",
+    "biome": "Desert"
+  },
+  {
+    "pet": "Frog",
+    "biome": "Lake"
+  },
+  {
+    "pet": "Duckling",
+    "biome": "Lake"
+  },
+  {
+    "pet": "Catfish",
+    "biome": "Lake"
+  },
+  {
+    "pet": "Turtle",
+    "biome": "Lake"
+  },
+  {
+    "pet": "Trulimero Trulicina",
+    "biome": "Lake"
+  },
+  {
+    "pet": "Swan",
+    "biome": "Lake"
+  },
+  {
+    "pet": "Axolotl",
+    "biome": "Lake"
+  },
+  {
+    "pet": "Leviathan",
+    "biome": "Lake"
+  },
+  {
+    "pet": "Chimpanzee",
+    "biome": "Jungle"
+  },
+  {
+    "pet": "Toucan",
+    "biome": "Jungle"
+  },
+  {
+    "pet": "Crocodile",
+    "biome": "Jungle"
+  },
+  {
+    "pet": "Gorilla",
+    "biome": "Jungle"
+  },
+  {
+    "pet": "Orangutini Ananassini",
+    "biome": "Jungle"
+  },
+  {
+    "pet": "Spider",
+    "biome": "Jungle"
+  },
+  {
+    "pet": "Tiger",
+    "biome": "Jungle"
+  },
+  {
+    "pet": "King Snake",
+    "biome": "Jungle"
+  },
+  {
+    "pet": "Penguin",
+    "biome": "Snow"
+  },
+  {
+    "pet": "Walrus",
+    "biome": "Snow"
+  },
+  {
+    "pet": "Polar Bear",
+    "biome": "Snow"
+  },
+  {
+    "pet": "Sabertooth Tiger",
+    "biome": "Snow"
+  },
+  {
+    "pet": "Mammoth",
+    "biome": "Snow"
+  },
+  {
+    "pet": "King Mammoth",
+    "biome": "Snow"
+  },
+  {
+    "pet": "Yeti",
+    "biome": "Snow"
+  },
+  {
+    "pet": "Ice Dragon",
+    "biome": "Snow"
+  },
+  {
+    "pet": "Lava Gecko",
+    "biome": "Volcano"
+  },
+  {
+    "pet": "Lava frog",
+    "biome": "Volcano"
+  },
+  {
+    "pet": "Flaming Bull",
+    "biome": "Volcano"
+  },
+  {
+    "pet": "Lava Iguana",
+    "biome": "Volcano"
+  },
+  {
+    "pet": "Chillin Chilli",
+    "biome": "Volcano"
+  },
+  {
+    "pet": "Cerberus",
+    "biome": "Volcano"
+  },
+  {
+    "pet": "Phoenix",
+    "biome": "Volcano"
+  },
+  {
+    "pet": "Lava Dragon",
+    "biome": "Volcano"
+  },
+  {
+    "pet": "Crane",
+    "biome": "Cherry Blossom"
+  },
+  {
+    "pet": "Salamander",
+    "biome": "Cherry Blossom"
+  },
+  {
+    "pet": "Red Panda",
+    "biome": "Cherry Blossom"
+  },
+  {
+    "pet": "Snowy Owl",
+    "biome": "Cherry Blossom"
+  },
+  {
+    "pet": "Koi",
+    "biome": "Cherry Blossom"
+  },
+  {
+    "pet": "Stag",
+    "biome": "Cherry Blossom"
+  },
+  {
+    "pet": "Oni Tiger",
+    "biome": "Cherry Blossom"
+  },
+  {
+    "pet": "Kitsune",
+    "biome": "Cherry Blossom"
+  },
+  {
+    "pet": "Dodo",
+    "biome": "Prehistoric"
+  },
+  {
+    "pet": "Pterodactyl",
+    "biome": "Prehistoric"
+  },
+  {
+    "pet": "Ankylosaurus",
+    "biome": "Prehistoric"
+  },
+  {
+    "pet": "Triceratops",
+    "biome": "Prehistoric"
+  },
+  {
+    "pet": "Bronto",
+    "biome": "Prehistoric"
+  },
+  {
+    "pet": "TRex",
+    "biome": "Prehistoric"
+  },
+  {
+    "pet": "Tralaledon",
+    "biome": "Prehistoric"
+  },
+  {
+    "pet": "Mosasaurus",
+    "biome": "Prehistoric"
+  },
+  {
+    "pet": "Centapede",
+    "biome": "Cosmic"
+  },
+  {
+    "pet": "Cosmic Gecko",
+    "biome": "Cosmic"
+  },
+  {
+    "pet": "Cosmic Gorilla",
+    "biome": "Cosmic"
+  },
+  {
+    "pet": "La Vacca Saturno Saturnita",
+    "biome": "Cosmic"
+  },
+  {
+    "pet": "Cosmic Skeleton Boss",
+    "biome": "Cosmic"
+  },
+  {
+    "pet": "Cosmic Dragon",
+    "biome": "Cosmic"
+  },
+  {
+    "pet": "Eternal Lunar Dragon",
+    "biome": "Cosmic"
+  },
+  {
+    "pet": "Unicorn",
+    "biome": "Cosmic"
+  },
+  {
+    "pet": "Parrotfish",
+    "biome": "Abyss Ocean"
+  },
+  {
+    "pet": "Swordfish",
+    "biome": "Abyss Ocean"
+  },
+  {
+    "pet": "Shark",
+    "biome": "Abyss Ocean"
+  },
+  {
+    "pet": "Orca",
+    "biome": "Abyss Ocean"
+  },
+  {
+    "pet": "Whale Shark",
+    "biome": "Abyss Ocean"
+  },
+  {
+    "pet": "Beluga Whale",
+    "biome": "Abyss Ocean"
+  },
+  {
+    "pet": "Kraken",
+    "biome": "Abyss Ocean"
+  },
+  {
+    "pet": "El Maja",
+    "biome": "Abyss Ocean"
+  },
+  {
+    "pet": "Spideron",
+    "biome": "Titan Temple"
+  },
+  {
+    "pet": "Crustacia",
+    "biome": "Titan Temple"
+  },
+  {
+    "pet": "Bladehide",
+    "biome": "Titan Temple"
+  },
+  {
+    "pet": "Mantaris",
+    "biome": "Titan Temple"
+  },
+  {
+    "pet": "Rhinotaur",
+    "biome": "Titan Temple"
+  },
+  {
+    "pet": "Mutant Shark",
+    "biome": "Titan Temple"
+  },
+  {
+    "pet": "Gorilla King",
+    "biome": "Titan Temple"
+  },
+  {
+    "pet": "Nightflame",
+    "biome": "Titan Temple"
+  },
+  {
+    "pet": "Light Dove",
+    "biome": "Angels & Demons (Angels)"
+  },
+  {
+    "pet": "Winged Lamb",
+    "biome": "Angels & Demons (Angels)"
+  },
+  {
+    "pet": "Sacred Moth",
+    "biome": "Angels & Demons (Angels)"
+  },
+  {
+    "pet": "Holy Peacock",
+    "biome": "Angels & Demons (Angels)"
+  },
+  {
+    "pet": "Pure Jellyfish",
+    "biome": "Angels & Demons (Angels)"
+  },
+  {
+    "pet": "Centaur",
+    "biome": "Angels & Demons (Angels)"
+  },
+  {
+    "pet": "Pegasus",
+    "biome": "Angels & Demons (Angels)"
+  },
+  {
+    "pet": "ArchAngel",
+    "biome": "Angels & Demons (Angels)"
+  },
+  {
+    "pet": "Flame Sprite",
+    "biome": "Angels & Demons (Demons)"
+  },
+  {
+    "pet": "Toro",
+    "biome": "Angels & Demons (Demons)"
+  },
+  {
+    "pet": "Imp",
+    "biome": "Angels & Demons (Demons)"
+  },
+  {
+    "pet": "Demon Hound",
+    "biome": "Angels & Demons (Demons)"
+  },
+  {
+    "pet": "Gargoyle",
+    "biome": "Angels & Demons (Demons)"
+  },
+  {
+    "pet": "RazorFang",
+    "biome": "Angels & Demons (Demons)"
+  },
+  {
+    "pet": "Skeleton Horse",
+    "biome": "Angels & Demons (Demons)"
+  },
+  {
+    "pet": "World Burner",
+    "biome": "Angels & Demons (Demons)"
+  },
+  {
+    "pet": "Prism Gecko",
+    "biome": "Enchanted Forest"
+  },
+  {
+    "pet": "Petal Beetle",
+    "biome": "Enchanted Forest"
+  },
+  {
+    "pet": "Enchanted Bluejay",
+    "biome": "Enchanted Forest"
+  },
+  {
+    "pet": "Starry Fox",
+    "biome": "Enchanted Forest"
+  },
+  {
+    "pet": "Spirit Panda",
+    "biome": "Enchanted Forest"
+  },
+  {
+    "pet": "Astral Jackalope",
+    "biome": "Enchanted Forest"
+  },
+  {
+    "pet": "Royal Skywhale",
+    "biome": "Enchanted Forest"
+  },
+  {
+    "pet": "Celestial Sunlion",
+    "biome": "Enchanted Forest"
+  },
+  {
+    "pet": "Whiskers",
+    "biome": "Halloween Zone 1"
+  },
+  {
+    "pet": "Jesterpop",
+    "biome": "Halloween Zone 1"
+  },
+  {
+    "pet": "Candlefang",
+    "biome": "Halloween Zone 1"
+  },
+  {
+    "pet": "Spirit Knight",
+    "biome": "Halloween Zone 1"
+  },
+  {
+    "pet": "Graveyard Brute",
+    "biome": "Halloween Zone 1"
+  },
+  {
+    "pet": "Ghost Reaper",
+    "biome": "Halloween Zone 1"
+  },
+  {
+    "pet": "Hooded Gerbil",
+    "biome": "Halloween Zone 2"
+  },
+  {
+    "pet": "Toadstool",
+    "biome": "Halloween Zone 2"
+  },
+  {
+    "pet": "Patchwork Imp",
+    "biome": "Halloween Zone 2"
+  },
+  {
+    "pet": "Haunted Scorpio",
+    "biome": "Halloween Zone 2"
+  },
+  {
+    "pet": "BloodBloom",
+    "biome": "Halloween Zone 2"
+  },
+  {
+    "pet": "Shelltide Voyager",
+    "biome": "Halloween Zone 2"
+  },
+  {
+    "pet": "Mimic Chest",
+    "biome": "Halloween Zone 3"
+  },
+  {
+    "pet": "Crowshade",
+    "biome": "Halloween Zone 3"
+  },
+  {
+    "pet": "Hexed Pumpkin",
+    "biome": "Halloween Zone 3"
+  },
+  {
+    "pet": "Werewolf",
+    "biome": "Halloween Zone 3"
+  },
+  {
+    "pet": "Gorillastein",
+    "biome": "Halloween Zone 3"
+  },
+  {
+    "pet": "Voidseer Pumpkin",
+    "biome": "Halloween Zone 3"
+  },
+  {
+    "pet": "Pumpkin Fiend",
+    "biome": "Halloween Paid Egg"
+  },
+  {
+    "pet": "Night Fang",
+    "biome": "Halloween Paid Egg"
+  },
+  {
+    "pet": "Tombstone Bear",
+    "biome": "Halloween Paid Egg"
+  },
+  {
+    "pet": "Grave Cerberus",
+    "biome": "Halloween Paid Egg"
+  },
+  {
+    "pet": "Phantom Dragon",
+    "biome": "Halloween Paid Egg"
+  },
+  {
+    "pet": "Bone Emperor",
+    "biome": "Halloween Paid Egg"
+  },
+  {
+    "pet": "Zombified Pumpkin Fiend",
+    "biome": "Halloween Zombie Egg"
+  },
+  {
+    "pet": "Zombified Night Fang",
+    "biome": "Halloween Zombie Egg"
+  },
+  {
+    "pet": "Zombified Tombstone Bear",
+    "biome": "Halloween Zombie Egg"
+  },
+  {
+    "pet": "Zombified Grave Cerberus",
+    "biome": "Halloween Zombie Egg"
+  },
+  {
+    "pet": "Zombified Phantom Dragon",
+    "biome": "Halloween Zombie Egg"
+  },
+  {
+    "pet": "Zombified Bone Emperor",
+    "biome": "Halloween Zombie Egg"
+  }
+]
