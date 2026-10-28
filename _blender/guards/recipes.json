@@ -217,7 +217,17 @@
       "BackFoot1.R"
     ],
     "sleepDrop": 9.5,
-    "runPeriod": 0.8
+    "runPeriod": 0.8,
+    "sleepFront": [
+      15,
+      105,
+      -25
+    ],
+    "sleepBack": [
+      65,
+      -120,
+      -20
+    ]
   },
   "Jungle": {
     "type": "quad",
@@ -279,7 +289,17 @@
     ],
     "feet": "auto",
     "sleepDrop": 2.3,
-    "runPeriod": 0.6
+    "runPeriod": 0.6,
+    "sleepFront": [
+      70,
+      105,
+      -65
+    ],
+    "sleepBack": [
+      -45,
+      -120,
+      60
+    ]
   },
   "Volcano": {
     "type": "quad",
@@ -340,7 +360,17 @@
     ],
     "feet": "auto",
     "sleepDrop": 2.0,
-    "runPeriod": 0.7
+    "runPeriod": 0.7,
+    "sleepFront": [
+      90,
+      -30,
+      0
+    ],
+    "sleepBack": [
+      -90,
+      0,
+      0
+    ]
   },
   "Desert": {
     "type": "multileg",
@@ -668,7 +698,10 @@
     "feet": "auto",
     "sleepDrop": 4.5,
     "runPeriod": 0.7,
-    "runLean": 8
+    "runLean": 8,
+    "groundIgnore": [
+      "Global"
+    ]
   },
   "Titan Temple": {
     "type": "biped",

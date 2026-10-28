@@ -16,7 +16,7 @@ local function anims(sleep, wake, run, idle)
 end
 
 -- Native sizes (studs, W x H x L) of the visible parts at rest, as the joints place them, in the guard's own frame.
--- Swim: no longer used for height (every guard sinks MommyMotion GUARD_SINK = 1 stud in water, none on ground).
+-- Swim: no longer used for height (every guard sinks MommyMotion GUARD_SINK = 2 studs in water, none on ground).
 GuardConfig.Guards = table.freeze({
 	Forest = {
 		Size = Vector3.new(2.37, 3.94, 3.98),
@@ -32,7 +32,7 @@ GuardConfig.Guards = table.freeze({
 	},
 	Jungle = {
 		Size = Vector3.new(4.12, 6.11, 13.48),
-		Anims = anims(86552172477481, 95708653069693, 119282141301757, 88555768578089),
+		Anims = anims(105941290528523, 77003880502421, 119282141301757, 88555768578089),
 	},
 	Snow = {
 		Size = Vector3.new(13.82, 13.70, 6.86),
@@ -40,7 +40,7 @@ GuardConfig.Guards = table.freeze({
 	},
 	Volcano = {
 		Size = Vector3.new(18.69, 20.21, 34.34),
-		Anims = anims(80618314047041, 124376439834147, 117721924343020, 97818704530556),
+		Anims = anims(81015190993148, 88732728749091, 117721924343020, 97818704530556),
 	},
 	["Abyss Ocean"] = {
 		Size = Vector3.new(12.75, 11.66, 37.09),
@@ -53,7 +53,7 @@ GuardConfig.Guards = table.freeze({
 	},
 	Cosmic = {
 		Size = Vector3.new(17.77, 17.37, 10.42),
-		Anims = anims(92305697524819, 132275891059020, 104787458468810, 86173998878987),
+		Anims = anims(71000132557140, 79347976222460, 104787458468810, 86173998878987),
 	},
 	["Cherry Blossom"] = {
 		Size = Vector3.new(16.14, 20.17, 38.07),
@@ -73,7 +73,7 @@ GuardConfig.Guards = table.freeze({
 	},
 	["Enchanted Forest"] = {
 		Size = Vector3.new(24.85, 32.66, 54.54),
-		Anims = anims(123476575283829, 117198637817252, 119246732511104, 72611807542419),
+		Anims = anims(100114061402435, 72495699331703, 119246732511104, 72611807542419),
 	},
 	Werewolf = {
 		Size = Vector3.new(14.67, 14.81, 24.00),

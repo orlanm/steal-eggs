@@ -6,7 +6,7 @@ local SpeedCurve = require(script.Parent.SpeedCurve)
 local GuardConfig = require(script.Parent.GuardConfig)
 local Motion = {}
 
-local GUARD_SINK = 1 -- studs a guard's lowest point sits below the water line (ground: none)
+local GUARD_SINK = 2 -- studs of a guard's body under the water line, asleep and chasing (ground: none)
 local VOXEL = 4
 
 -- The den's guard (GuardConfig), or nil for the old swimming T-rex. Guard pivots sit on the ground.
@@ -122,16 +122,9 @@ function Motion.inWater(pos: Vector3, cell: Instance?): boolean
 end
 
 -- Where a guard's lowest point belongs at this XZ: GUARD_SINK under the water line in water, on the
--- ground (level with the plaza) everywhere else. Used while chasing and returning.
+-- ground (level with the plaza) everywhere else. Used asleep, chasing and returning.
 function Motion.lowestY(pos: Vector3, cell: Instance?): number
 	return if Motion.inWater(pos, cell) then MapConfig.WaterTop - GUARD_SINK else MapConfig.WaterTop
-end
-
--- Asleep / watching: sit slightly above the water line. Coplanar with terrain water (or sunk
--- through it) strobes flat sleep meshes like Spirit Panda; a small lift clears the surface.
-local WATCH_CLEARANCE = 1
-function Motion.watchLowestY(_pos: Vector3, _cell: Instance?): number
-	return MapConfig.WaterTop + WATCH_CLEARANCE
 end
 
 -- Guards: their pivot is their lowest point (client groundPivot), so this is Motion.lowestY at `pos`
@@ -147,8 +140,7 @@ end
 function Motion.rest(cell)
 	local p = cell:GetAttribute("HomePosition")
 	if Motion.guard(cell) then
-		-- Watch height (deck), not the sunk chase height — sleeping on the water line strobes.
-		local ground = Vector3.new(p.X, Motion.watchLowestY(p, cell), p.Z)
+		local ground = Vector3.new(p.X, Motion.lowestY(p, cell), p.Z)
 		return CFrame.lookAt(ground, ground + cell:GetAttribute("Facing"))
 	end
 	local dropped = Vector3.new(p.X, p.Y - Config.RestDrop, p.Z)

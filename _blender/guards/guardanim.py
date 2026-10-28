@@ -241,16 +241,13 @@ def sleep_pose(rec, breath=0.0):
     S = rec.get('sleepScale', 1.0)
     if not rec.get('sleep', {}).get('manual'):
         if kind in ('quad',):
+            # sleepFront / sleepBack: per-rig fold (hip, knee, paw pitch); tuned with sleepcheck.py
             for L in legs(rec, 'front'):
-                c = L['chain']
-                add(p, c[0], -35 * S)
-                if len(c) > 1: add(p, c[1], 105 * S)
-                if len(c) > 2: add(p, c[2], -65 * S)
+                for n, a in zip(L['chain'], rec.get('sleepFront', (-35, 105, -65))):
+                    add(p, n, a * S)
             for L in legs(rec, 'back'):
-                c = L['chain']
-                add(p, c[0], 55 * S)
-                if len(c) > 1: add(p, c[1], -120 * S)
-                if len(c) > 2: add(p, c[2], 60 * S)
+                for n, a in zip(L['chain'], rec.get('sleepBack', (55, -120, 60))):
+                    add(p, n, a * S)
             for i, n in enumerate(rec.get('neck', [])):
                 add(p, n, -14 * S)
             if rec.get('head'): add(p, rec['head'], -10 * S)
@@ -258,12 +255,10 @@ def sleep_pose(rec, breath=0.0):
                 add(p, n, -6 * S, 14 * S, 0)
         elif kind in ('biped', 'bird'):
             for L in legs(rec):
-                c = L['chain']
-                add(p, c[0], 80 * S)
-                if len(c) > 1: add(p, c[1], -95 * S)
-                if len(c) > 2: add(p, c[2], 15 * S)
+                for n, a in zip(L['chain'], rec.get('sleepLeg', (80, -95, 15))):
+                    add(p, n, a * S)
             for n in rec.get('spine', [])[1:]:
-                add(p, n, -8 * S)
+                add(p, n, rec.get('sleepLean', -8) * S)
             for n in rec.get('neck', []):
                 add(p, n, -16 * S)
             if rec.get('head'): add(p, rec['head'], -14 * S)
@@ -503,8 +498,10 @@ def grounded(rig, rec, pose, clip):
             n = stack.pop()
             carried.add(n)
             stack += rig.children.get(n, [])
-        # the movers themselves are pivots (often a bone on the floor), not what touches it
-        body = [n for n in carried if n in w and n not in movers]
+        # the movers themselves are pivots (often a bone on the floor), not what touches it; groundIgnore names
+        # other helper bones that reach the floor (e.g. a root stick under the hips)
+        skip = set(movers) | set(rec.get('groundIgnore', []))
+        body = [n for n in carried if n in w and n not in skip]
         _, w0 = solve(rig, rec, stand(rec))
         lowest = min(bottom(rig, w, n) for n in body)
         lift = np.array(pose.get('lift', (0, 0, 0)), float)

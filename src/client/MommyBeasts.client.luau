@@ -736,19 +736,76 @@ local function lowestPoint(parts: { BasePart }): number?
 	return if lo < math.huge then lo else nil
 end
 
+-- Part boxes overstate how low a rotated mesh reaches (a tilted box's corner hangs below the mesh), so
+-- every so often rays cast up from under the parts find where the mesh surface really is. Parts are
+-- tried lowest box first and only while their box could still reach below the best hit, each with a
+-- 13 x 13 grid, so thin feet, fins and blade tips are found. Returns the true lowest point minus lowestPoint()
+-- (>= 0), or nil if no ray hit.
+local GAP_GRID = 6 -- rays per side = 2 * GAP_GRID + 1
+local function partBottom(part: BasePart): number
+	local _, _, _, _, _, _, r10, r11, r12 = part.CFrame:GetComponents()
+	local half = part.Size * 0.5
+	return part.Position.Y - (math.abs(r10) * half.X + math.abs(r11) * half.Y + math.abs(r12) * half.Z)
+end
+local function meshGap(beast): number?
+	local parts = beast.visible
+	local boxLo = lowestPoint(parts)
+	if not boxLo then
+		return nil
+	end
+	if not beast.rayParams then
+		local params = RaycastParams.new()
+		params.FilterType = Enum.RaycastFilterType.Include
+		params.FilterDescendantsInstances = parts
+		beast.rayParams = params
+	end
+	local order = {}
+	for _, part in parts do
+		table.insert(order, { part, partBottom(part) })
+	end
+	table.sort(order, function(a, b)
+		return a[2] < b[2]
+	end)
+	for _, part in parts do
+		part.CanQuery = true
+	end
+	local lo = math.huge
+	local up = Vector3.new(0, 400, 0)
+	for _, entry in order do
+		local part, bottom = entry[1], entry[2]
+		if bottom >= lo then
+			break -- no remaining part can reach lower than what was already hit
+		end
+		local cf, half = part.CFrame, part.Size * 0.5
+		local _, _, _, r00, r01, r02, _, _, _, r20, r21, r22 = cf:GetComponents()
+		local ex = (math.abs(r00) * half.X + math.abs(r01) * half.Y + math.abs(r02) * half.Z) / GAP_GRID * 0.98
+		local ez = (math.abs(r20) * half.X + math.abs(r21) * half.Y + math.abs(r22) * half.Z) / GAP_GRID * 0.98
+		for i = -GAP_GRID, GAP_GRID do
+			for j = -GAP_GRID, GAP_GRID do
+				local hit = workspace:Raycast(Vector3.new(cf.X + ex * i, boxLo - 2, cf.Z + ez * j), up, beast.rayParams)
+				if hit then
+					lo = math.min(lo, hit.Position.Y)
+				end
+			end
+		end
+	end
+	for _, part in parts do
+		part.CanQuery = false
+	end
+	return if lo < math.huge then math.max(0, lo - boxLo) else nil
+end
+
 -- Where to draw a guard: beast.cf moved up or down so its animated lowest point (feet standing, belly
--- lying asleep, a dangling tail) sits on the right height. Chase/return sink 1 stud under the water
--- line; watching sleeps on the walk deck so a flat belly does not strobe through the water surface.
+-- lying asleep, a dangling tail; measured on the mesh, see meshGap) sits on Motion.lowestY: GUARD_SINK
+-- studs under the water line in water, on the ground elsewhere - asleep, chasing and returning.
 -- Only the drawn model moves; beast.cf (and the server's chase pose) keep their XZ.
 local function guardDisplay(beast, dt: number): CFrame
 	local lo = lowestPoint(beast.visible)
 	if lo then
-		local offset = lo - beast.model:GetPivot().Y
+		local offset = lo + (beast.meshGap or 0) - beast.model:GetPivot().Y
 		beast.lowOffset += (offset - beast.lowOffset) * math.clamp(dt * 12, 0, 1)
 	end
-	local baseY = if beast.mode == "Watch"
-		then Motion.watchLowestY(beast.cf.Position, beast.den)
-		else Motion.lowestY(beast.cf.Position, beast.den)
+	local baseY = Motion.lowestY(beast.cf.Position, beast.den)
 	local y = baseY - beast.lowOffset
 	beast.drawY = if beast.drawY then beast.drawY + (y - beast.drawY) * math.clamp(dt * 10, 0, 1) else y
 	if beast.light then
@@ -758,7 +815,25 @@ local function guardDisplay(beast, dt: number): CFrame
 	return beast.cf + Vector3.new(0, beast.drawY - beast.cf.Y, 0)
 end
 
+local gapTurn, gapClock = 0, 0
 RunService.PreRender:Connect(function(dt)
+	-- refresh one guard's mesh gap per frame (round robin)
+	local guardList = {}
+	for _, beast in beasts do
+		if beast.guard then
+			table.insert(guardList, beast)
+		end
+	end
+	gapClock += dt
+	if #guardList > 0 and gapClock >= 2 / #guardList then -- each guard about every 2 s
+		gapClock = 0
+		gapTurn = gapTurn % #guardList + 1
+		local beast = guardList[gapTurn]
+		local gap = meshGap(beast)
+		if gap then
+			beast.meshGap = gap
+		end
+	end
 	local character = player.Character
 	local root = character and character:FindFirstChild("HumanoidRootPart")
 	for _, beast in beasts do
