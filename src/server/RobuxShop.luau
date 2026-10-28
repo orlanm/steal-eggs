@@ -1,7 +1,7 @@
 --!strict
 -- Explorer: ServerScriptService.BabyBeastsServer.RobuxShop
 -- Shop popup purchases (ShopConfig): passes bought as Game Passes or gifted to another player with a
--- developer product, weekly Lucky Eggs and cash packs. ShopServer's ProcessReceipt calls
+-- developer product, vehicles (cash or a developer product), weekly Lucky Eggs and cash packs. ShopServer's ProcessReceipt calls
 -- RobuxShop.processReceipt. In Studio, an offer whose dashboard id is still 0 is granted for free so
 -- the flow can be tested.
 
@@ -52,6 +52,12 @@ local productToSelf: { [number]: string } = {}
 local productToLucky: { [number]: ShopConfig.Offer } = {}
 local productToCash: { [number]: ShopConfig.Offer } = {}
 local productToStars: { [number]: ShopConfig.Offer } = {}
+local productToVehicle: { [number]: string } = {}
+for _, v in ShopConfig.Vehicles do
+	if v.ProductId > 0 then
+		productToVehicle[v.ProductId] = v.Id
+	end
+end
 for _, o in ShopConfig.StarOffers do
 	if o.ProductId > 0 then
 		productToStars[o.ProductId] = o
@@ -158,6 +164,14 @@ local function giveCash(player: Player, o: ShopConfig.Offer)
 	tell(player, "+" .. Economy.formatCash(amount) .. " Cash!")
 end
 
+-- Boats.server gives the hotbar Tool when the OwnsBoat attribute turns on.
+local function giveVehicle(player: Player, vehicleId: string)
+	local vehicle = ShopConfig.vehicle(vehicleId)
+	if vehicle and SpeedData.grantPass(player, vehicle.Id, true) then
+		tell(player, "You got the " .. vehicle.Name .. "! Equip it from your hotbar while in the water.")
+	end
+end
+
 -- Requests ---------------------------------------------------------------------------------------
 
 local function buyPass(player: Player, passId: any)
@@ -260,6 +274,29 @@ local function buyCash(player: Player, offerId: any)
 	end
 end
 
+-- withCash: pay the cash price, otherwise prompt the Robux developer product.
+local function buyVehicle(player: Player, vehicleId: any, withCash: any)
+	local vehicle = ShopConfig.vehicle(vehicleId)
+	if not vehicle then
+		return
+	end
+	if SpeedData.hasPass(player, vehicle.Id) then
+		tell(player, "You already own the " .. vehicle.Name, BAD)
+	elseif withCash == true then
+		if SpeedData.trySpend(player, vehicle.Cash) then
+			giveVehicle(player, vehicle.Id)
+		else
+			tell(player, "Need " .. Economy.formatCash(vehicle.Cash) .. " cash for the " .. vehicle.Name, BAD)
+		end
+	elseif vehicle.ProductId > 0 then
+		MarketplaceService:PromptProductPurchase(player, vehicle.ProductId)
+	elseif studioFree(vehicle.ProductId) then
+		giveVehicle(player, vehicle.Id)
+	else
+		tell(player, vehicle.Name .. " is not on sale yet", BAD)
+	end
+end
+
 -- Called from ShopServer's single ProcessReceipt. Nil when the product is not a shop product.
 function RobuxShop.processReceipt(player: Player, receipt: any): Enum.ProductPurchaseDecision?
 	local id = receipt.ProductId
@@ -268,7 +305,8 @@ function RobuxShop.processReceipt(player: Player, receipt: any): Enum.ProductPur
 	local lucky = productToLucky[id]
 	local cash = productToCash[id]
 	local stars = productToStars[id]
-	if not (passId or selfPass or lucky or cash or stars) then
+	local vehicle = productToVehicle[id]
+	if not (passId or selfPass or lucky or cash or stars or vehicle) then
 		return nil
 	end
 	if not SpeedData.isReady(player) then
@@ -292,6 +330,8 @@ function RobuxShop.processReceipt(player: Player, receipt: any): Enum.ProductPur
 		if not giveStars(player, stars) then
 			return Enum.ProductPurchaseDecision.NotProcessedYet
 		end
+	elseif vehicle then
+		giveVehicle(player, vehicle)
 	end
 	return Enum.ProductPurchaseDecision.PurchaseGranted
 end
@@ -334,6 +374,8 @@ function RobuxShop.start(given: Hooks)
 			buyCash(player, id)
 		elseif kind == "Stars" then
 			buyStars(player, id)
+		elseif kind == "Vehicle" then
+			buyVehicle(player, id, extra)
 		elseif kind == "Treadmill" and hooks then
 			local ok, message = hooks.upgradeTreadmill(player)
 			if ok then

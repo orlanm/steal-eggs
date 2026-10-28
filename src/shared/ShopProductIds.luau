@@ -8,6 +8,7 @@
 --   Gifts:  Developer Products, one per pass, bought to give that pass to another player.
 --   Lucky / Cash / Stars: Developer Products.
 --   Grow: Growing Eggs panel (PenConfig): Grow All + Skip tiers keyed by seconds covered.
+--   Vehicles: Developer Products for owned-forever vehicles (ShopConfig.Vehicles).
 return {
 	Passes = { Growth = 2053932423, Money = 2052588360, Speed = 2052348431 },
 	Self = { Growth = 3722430741, Money = 3722430751, Speed = 3722430758 },
@@ -16,4 +17,5 @@ return {
 	Cash = { Small = 3722430653, Medium = 3722430663, Large = 3722430666 },
 	Stars = { [1] = 3722532922, [3] = 3722532936, [5] = 3722532941 },
 	Grow = { All = 3723013973, [900] = 3723013984, [1800] = 3723013987, [3600] = 3723013997 },
+	Vehicles = { Boat = 3723413206 },
 }

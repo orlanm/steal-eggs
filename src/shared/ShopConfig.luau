@@ -1,7 +1,7 @@
 --!strict
 -- Explorer: ReplicatedStorage.BabyBeastsShared.ShopConfig
--- The Robux shop (Steal an Egg style): passes you can buy or gift, the treadmill upgrade, weekly
--- Lucky Egg and Mount Star stock and cash packs. Dashboard ids live in ShopProductIds (0 = not created yet).
+-- The Robux shop (Steal an Egg style): passes you can buy or gift, the treadmill upgrade, vehicles,
+-- weekly Lucky Egg and Mount Star stock and cash packs. Dashboard ids live in ShopProductIds (0 = not created yet).
 
 local Ids = require(script.Parent.ShopProductIds)
 
@@ -19,6 +19,18 @@ export type Pass = {
 	GiftProductId: number,
 }
 
+-- Owned forever, bought with cash or Robux (developer product), saved with the passes (Perks) and
+-- spawned from a hotbar Tool (Boats.server).
+export type Vehicle = {
+	Id: string,
+	Name: string,
+	Blurb: string,
+	Image: string,
+	Cash: number,
+	Robux: number, -- shown until the live dashboard price loads
+	ProductId: number,
+}
+
 export type Offer = {
 	Id: string,
 	Amount: number,
@@ -33,6 +45,18 @@ ShopConfig.Passes = {
 	{ Id = "Money", Name = "x2 Money", Blurb = "Get x2 Money!", Icon = "Coin", Robux = 199, Section = "Passes", GamePassId = Ids.Passes.Money, SelfProductId = Ids.Self.Money, GiftProductId = Ids.Gifts.Money },
 	{ Id = "Speed", Name = "x2 Speed", Blurb = "DOUBLE Your SPEED", Icon = "Sneaker", Robux = 99, Section = "Speed", GamePassId = Ids.Passes.Speed, SelfProductId = Ids.Self.Speed, GiftProductId = Ids.Gifts.Speed },
 } :: { Pass }
+
+ShopConfig.Vehicles = {
+	{
+		Id = "Boat",
+		Name = "Fishing Boat",
+		Blurb = "Sail across the water! Equip it while swimming.",
+		Image = "rbxassetid://127503029975255", -- _blender/fishing_boat.py render
+		Cash = 100_000_000_000,
+		Robux = 399,
+		ProductId = Ids.Vehicles.Boat,
+	},
+} :: { Vehicle }
 
 ShopConfig.GrowthBoost = 2 -- eggs in your pen hatch this many times faster
 ShopConfig.MoneyBoost = 2 -- pen pet income
@@ -73,6 +97,20 @@ function ShopConfig.pass(id: string): Pass?
 		end
 	end
 	return nil
+end
+
+function ShopConfig.vehicle(id: string): Vehicle?
+	for _, vehicle in ShopConfig.Vehicles do
+		if vehicle.Id == id then
+			return vehicle
+		end
+	end
+	return nil
+end
+
+-- Anything saved in the Perks list: a pass or a vehicle.
+function ShopConfig.perk(id: string): boolean
+	return ShopConfig.pass(id) ~= nil or ShopConfig.vehicle(id) ~= nil
 end
 
 function ShopConfig.week(now: number): number

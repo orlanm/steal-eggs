@@ -93,7 +93,7 @@ end
 local function icon(parent: Instance, art: string, props: { [string]: any }): ImageLabel
 	local image = new("ImageLabel", parent, {
 		BackgroundTransparency = 1,
-		Image = (Art :: any)[art] or "",
+		Image = (Art :: any)[art] or (if string.find(art, "^rbxassetid://") then art else ""),
 		ScaleType = Enum.ScaleType.Fit,
 	})
 	for k, v in props do
@@ -462,6 +462,58 @@ do
 	end)
 end
 
+-- VEHICLES ------------------------------------------------------------------------------------------
+
+sectionTitle("Vehicles", Color3.fromRGB(90, 200, 255))
+local vehicleRefreshers: { () -> () } = {}
+for _, vehicle in ShopConfig.Vehicles do
+	local c = card(row(210), UDim2.fromOffset(INNER, 210), { Color3.fromRGB(120, 220, 255), Color3.fromRGB(20, 110, 210) })
+	c.Name = vehicle.Id
+	icon(c, vehicle.Image, { Position = UDim2.fromOffset(6, 4), Size = UDim2.fromOffset(220, 200) })
+	local title = text(c, string.upper(vehicle.Name) .. "!", 36, {
+		Position = UDim2.fromOffset(226, 10),
+		Size = UDim2.new(1, -240, 0, 42),
+		TextXAlignment = Enum.TextXAlignment.Left,
+	})
+	title.TextColor3 = Color3.fromRGB(255, 240, 120)
+	text(c, vehicle.Blurb, 20, {
+		Position = UDim2.fromOffset(226, 52),
+		Size = UDim2.new(1, -240, 0, 50),
+		TextXAlignment = Enum.TextXAlignment.Left,
+		TextWrapped = true,
+		TextScaled = false,
+	})
+	local cashButton, cashLabel = priceButton(c, { Position = UDim2.new(0, 226, 1, -76), Size = UDim2.new(0.5, -128, 0, 58) })
+	cashButton.BackgroundColor3 = Color3.fromRGB(255, 196, 40)
+	local robuxButton, robuxLabel = priceButton(c, { Position = UDim2.new(0.5, 106, 1, -76), Size = UDim2.new(0.5, -120, 0, 58) })
+	local robux = vehicle.Robux
+	local function refresh()
+		local owned = player:GetAttribute("Owns" .. vehicle.Id) == true
+		local cash = player:GetAttribute("Cash")
+		local affordable = typeof(cash) == "number" and cash >= vehicle.Cash
+		cashLabel.Text = if owned then "OWNED" else Economy.formatCash(vehicle.Cash)
+		cashButton.BackgroundColor3 = if owned or not affordable then Color3.fromRGB(120, 120, 130) else Color3.fromRGB(255, 196, 40)
+		robuxButton.Visible = not owned
+		cashButton.Size = if owned then UDim2.new(1, -240, 0, 58) else UDim2.new(0.5, -128, 0, 58)
+		robuxLabel.Text = formatRobux(robux)
+	end
+	livePrice(vehicle.ProductId, Enum.InfoType.Product, vehicle.Robux, function(p)
+		robux = p
+		refresh()
+	end)
+	cashButton.Activated:Connect(function()
+		if player:GetAttribute("Owns" .. vehicle.Id) ~= true then
+			buy("Vehicle", vehicle.Id, true)
+		end
+	end)
+	robuxButton.Activated:Connect(function()
+		buy("Vehicle", vehicle.Id, false)
+	end)
+	player:GetAttributeChangedSignal("Owns" .. vehicle.Id):Connect(refresh)
+	table.insert(vehicleRefreshers, refresh)
+	table.insert(refreshers, refresh)
+end
+
 -- MOUNT STARS ---------------------------------------------------------------------------------------
 
 sectionTitle("Mount Stars", Color3.fromRGB(255, 212, 59))
@@ -650,7 +702,7 @@ end
 local nav = new("Frame", root, {
 	Name = "SectionBar",
 	Position = UDim2.fromOffset(WIDTH + 12, 90),
-	Size = UDim2.fromOffset(NAV - 12, 5 * 76),
+	Size = UDim2.fromOffset(NAV - 12, 6 * 76),
 	BackgroundTransparency = 1,
 })
 new("UIListLayout", nav, { Padding = UDim.new(0, 10), SortOrder = Enum.SortOrder.LayoutOrder })
@@ -667,7 +719,7 @@ local function scrollTo(name: string)
 	TweenService:Create(scroll, TweenInfo.new(0.35, Enum.EasingStyle.Quad), { CanvasPosition = Vector2.new(0, math.clamp(y, 0, maxY)) }):Play()
 end
 
-for i, entry in { { "Tag", "Passes", Color3.fromRGB(255, 90, 90) }, { "Sneaker", "Speed", Color3.fromRGB(70, 170, 255) }, { "Star", "Mount Stars", Color3.fromRGB(255, 200, 40) }, { "LuckyEgg", "Lucky Eggs", Color3.fromRGB(176, 84, 255) }, { "CashStack", "Cash", Color3.fromRGB(70, 214, 60) } } do
+for i, entry in { { "Tag", "Passes", Color3.fromRGB(255, 90, 90) }, { "Sneaker", "Speed", Color3.fromRGB(70, 170, 255) }, { ShopConfig.Vehicles[1].Image, "Vehicles", Color3.fromRGB(90, 200, 255) }, { "Star", "Mount Stars", Color3.fromRGB(255, 200, 40) }, { "LuckyEgg", "Lucky Eggs", Color3.fromRGB(176, 84, 255) }, { "CashStack", "Cash", Color3.fromRGB(70, 214, 60) } } do
 	local b = button(nav, Color3.fromRGB(56, 56, 66), { Name = entry[2], LayoutOrder = i, Size = UDim2.fromOffset(NAV - 12, NAV - 12) })
 	local edge = b:FindFirstChildOfClass("UIStroke") :: UIStroke
 	edge.Color = entry[3]
@@ -921,6 +973,9 @@ for _, name in { "TreadmillTier", "Cash", "PenIncome" } do
 		if root.Visible then
 			refreshTreadmill()
 			refreshCash()
+			for _, refresh in vehicleRefreshers do
+				refresh()
+			end
 		end
 	end)
 end
@@ -945,7 +1000,7 @@ local function fit()
 	PopupLayout.fit(gui, root, rootScale, Vector2.new(WIDTH + NAV, MIN_HEIGHT), 1.15, function(scale, area)
 		local h = math.clamp(area.Y / scale, MIN_HEIGHT, HEIGHT)
 		-- section buttons shrink to fit the shorter bar
-		local side = math.min(NAV - 12, math.floor((h - 100 - 40) / 5))
+		local side = math.min(NAV - 12, math.floor((h - 100 - 50) / 6))
 		nav.Size = UDim2.fromOffset(NAV - 12, h - 100)
 		for _, b in navButtons do
 			b.Size = UDim2.fromOffset(side, side)

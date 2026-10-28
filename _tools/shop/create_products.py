@@ -42,11 +42,17 @@ ITEMS = [
     ('Grow.900', 'product', 'Instant Hatch (15m)', 'Skip the growth of your egg by up to 15 minutes!', 9, 'Stopwatch'),
     ('Grow.1800', 'product', 'Instant Hatch (30m)', 'Skip the growth of your egg by up to 30 minutes!', 19, 'Stopwatch'),
     ('Grow.3600', 'product', 'Instant Hatch (1h)', 'Skip the growth of your egg by up to 1 hour!', 29, 'Stopwatch'),
+    # Vehicles section: owned forever, spawned from the hotbar on water
+    ('Vehicles.Boat', 'product', 'Fishing Boat', 'Your own fishing boat! Equip it on water to sail anywhere.', 399, 'Boat'),
 ]
 
 
 def key():
-    return (ROOT / '.roblox_opencloud_key').read_text().strip()
+    # worktrees have no key file: fall back to the main checkout
+    for path in (ROOT / '.roblox_opencloud_key', Path.home() / 'Desktop' / 'steal eggs' / '.roblox_opencloud_key'):
+        if path.exists():
+            return path.read_text().strip()
+    sys.exit('missing .roblox_opencloud_key')
 
 
 def post(url, fields, image):
@@ -116,6 +122,7 @@ def write_luau(state):
 --   Gifts:  Developer Products, one per pass, bought to give that pass to another player.
 --   Lucky / Cash / Stars: Developer Products.
 --   Grow: Growing Eggs panel (PenConfig): Grow All + Skip tiers keyed by seconds covered.
+--   Vehicles: Developer Products for owned-forever vehicles (ShopConfig.Vehicles).
 return {{
 	Passes = {{ Growth = {g('Passes.Growth')}, Money = {g('Passes.Money')}, Speed = {g('Passes.Speed')} }},
 	Self = {{ Growth = {g('Self.Growth')}, Money = {g('Self.Money')}, Speed = {g('Self.Speed')} }},
@@ -124,6 +131,7 @@ return {{
 	Cash = {{ Small = {g('Cash.Small')}, Medium = {g('Cash.Medium')}, Large = {g('Cash.Large')} }},
 	Stars = {{ [1] = {g('Stars.1')}, [3] = {g('Stars.3')}, [5] = {g('Stars.5')} }},
 	Grow = {{ All = {g('Grow.All')}, [900] = {g('Grow.900')}, [1800] = {g('Grow.1800')}, [3600] = {g('Grow.3600')} }},
+	Vehicles = {{ Boat = {g('Vehicles.Boat')} }},
 }}
 """
     (ROOT / 'src' / 'shared' / 'ShopProductIds.luau').write_text(text)

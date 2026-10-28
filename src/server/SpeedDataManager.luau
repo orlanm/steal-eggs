@@ -148,6 +148,9 @@ local function publish(player: Player)
 	for _, pass in ShopConfig.Passes do
 		player:SetAttribute("Pass" .. pass.Id, hasPass(session, pass.Id))
 	end
+	for _, vehicle in ShopConfig.Vehicles do
+		player:SetAttribute("Owns" .. vehicle.Id, hasPass(session, vehicle.Id))
+	end
 	player:SetAttribute("LuckyStock", luckyLeft(session))
 	player:SetAttribute("Stars", session.stars)
 	player:SetAttribute("StarStock", starsLeft(session))
@@ -218,7 +221,7 @@ local function applyData(session: Session, data: any)
 	session.owned = readOwned(data)
 	if typeof(data.Perks) == "table" then
 		for _, id in data.Perks do
-			if typeof(id) == "string" and ShopConfig.pass(id) then
+			if typeof(id) == "string" and ShopConfig.perk(id) then
 				session.perks[id] = true
 			end
 		end
@@ -713,10 +716,10 @@ function Manager.hasPass(player: Player, id: string): boolean
 	return session ~= nil and hasPass(session, id)
 end
 
--- saved: bought as a gift / developer product. Otherwise a Game Pass the player owns.
+-- saved: bought as a gift / developer product (or a vehicle). Otherwise a Game Pass the player owns.
 function Manager.grantPass(player: Player, id: string, saved: boolean): boolean
 	local session = sessions[player]
-	if not session or not ShopConfig.pass(id) then
+	if not session or not ShopConfig.perk(id) then
 		return false
 	end
 	if saved then
